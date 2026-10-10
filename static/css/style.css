@@ -1,0 +1,109 @@
+/* Style the overall page */
+body {
+    background-color: #ffffff;
+    color: #111111;
+    margin: 30px;
+    padding: 10px;
+}
+
+/* Style the main page heading */
+.main-title {
+    color: #111111;
+    background-color: #00cc99;
+    font-size: 36px;
+    padding: 18px;
+    margin: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #111111;
+    border-radius: 10px;
+}
+
+/* Style all paragraphs */
+p {
+    color: #111111;
+    background-color: #ffffff;
+    font-size: 17px;
+    padding: 12px;
+    margin: 10px;
+}
+
+/* Style the third paragraph using its ID */
+#career-goal {
+    color: #111111;
+    background-color: #e6fff8;
+    font-weight: bold;
+    padding: 15px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00cc99;
+    border-radius: 8px;
+}
+
+/* Style all level two headings */
+h2 {
+    color: #111111;
+    background-color: #e6fff8;
+    font-size: 24px;
+    padding: 10px;
+    margin: 15px 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00cc99;
+    border-radius: 8px;
+}
+
+/* Style the lists */
+ul, ol {
+    color: #111111;
+    background-color: #ffffff;
+    padding: 25px;
+    margin: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00cc99;
+    border-radius: 8px;
+}
+
+/* Style the course table */
+table, th, td {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00cc99;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: #ffffff;
+    margin: 10px;
+}
+
+th {
+    color: #111111;
+    background-color: #00cc99;
+    font-weight: bold;
+    padding: 10px;
+}
+
+td {
+    color: #111111;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+/* Style the links */
+a {
+    color: #008866;
+    font-weight: bold;
+}
+
+/* Style only images using the logo class */
+img.logo {
+    width: 300px;
+    height: 80px;
+    margin: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00cc99;
+    border-radius: 8px;
+}
