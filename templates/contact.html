@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+Contact
+{% endblock %}
+
+{% block page_head %}
+Contact Me
+{% endblock %}
+
+{% block page_content %}
+
+
+{% if form_submitted %}
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <h2>Thank you for completing my form!</h2>
+
+        <hr>
+
+        <p>
+            <strong>First Name:</strong><br>
+            {{ request.form.get('first_name') }}
+        </p>
+
+        <p>
+            <strong>Last Name:</strong><br>
+            {{ request.form.get('last_name') }}
+        </p>
+
+        <p>
+            <strong>Email Address:</strong><br>
+            {{ request.form.get('email') }}
+        </p>
+
+        <p>
+            <strong>Message:</strong><br>
+            {{ request.form.get('message') }}
+        </p>
+
+        <a href="{{ url_for('contact') }}"
+           class="btn btn-primary">
+            Complete form again
+        </a>
+
+    </div>
+
+</div>
+
+
+{% else %}
+
+
+<form action="{{ url_for('contact') }}"
+      method="post"
+      class="row g-3">
+
+    <div class="col-md-6">
+
+        <label class="form-label">
+            First Name
+        </label>
+
+        <input type="text"
+               class="form-control"
+               name="first_name">
+
+    </div>
+
+
+    <div class="col-md-6">
+
+        <label class="form-label">
+            Last Name
+        </label>
+
+        <input type="text"
+               class="form-control"
+               name="last_name">
+
+    </div>
+
+
+    <div class="col-12">
+
+        <label class="form-label">
+            Email Address
+        </label>
+
+        <input type="email"
+               class="form-control"
+               name="email">
+
+    </div>
+
+
+    <div class="col-12">
+
+        <label class="form-label">
+            Message
+        </label>
+
+        <textarea class="form-control"
+                  name="message"
+                  rows="4"></textarea>
+
+    </div>
+
+
+    <div class="col-12">
+
+        <button type="submit"
+                class="btn btn-primary">
+            Submit Form
+        </button>
+
+    </div>
+
+</form>
+
+
+{% endif %}
+
+
+{% endblock %}
