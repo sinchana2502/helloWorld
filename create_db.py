@@ -1,10 +1,9 @@
 from app import app, db
-from models import Student, Major
-import datetime as dt
-
+from models import Major, User, Student
+from werkzeug.security import generate_password_hash
+from datetime import datetime as dt
 
 with app.app_context():
-
     db.drop_all()
     db.create_all()
 
@@ -20,8 +19,7 @@ with app.app_context():
     ]
 
     for each_major in majors:
-
-        print(each_major)
+        print(f'{each_major} inserted into major')
 
         a_major = Major(
             major=each_major
@@ -31,35 +29,104 @@ with app.app_context():
         db.session.commit()
 
 
+    # Initial loading of users
+    users = [
+        {
+            'username': 'student',
+            'email': 'student@umd.edu',
+            'first_name': 'Imma',
+            'last_name': 'Student',
+            'password': generate_password_hash(
+                'studentpw',
+                method='pbkdf2:sha256'
+            ),
+            'role': 'STUDENT'
+        },
+
+        {
+            'username': 'manager',
+            'email': 'manager@umd.edu',
+            'first_name': 'Joe',
+            'last_name': 'King',
+            'password': generate_password_hash(
+                'managerpw',
+                method='pbkdf2:sha256'
+            ),
+            'role': 'MANAGER'
+        },
+
+        {
+            'username': 'admin',
+            'email': 'admin@umd.edu',
+            'first_name': 'Crystal',
+            'last_name': 'Ball',
+            'password': generate_password_hash(
+                'adminpw',
+                method='pbkdf2:sha256'
+            ),
+            'role': 'ADMIN'
+        },
+
+        {
+            'username': 'sinchana2502',
+            'email': 'sinchana@umd.edu',
+            'first_name': 'Sinchana',
+            'last_name': 'Rai',
+            'password': generate_password_hash(
+                'sinchana2502',
+                method='pbkdf2:sha256'
+            ),
+            'role': 'STUDENT'
+        }
+    ]
+
+    for each_user in users:
+        print(f'{each_user["username"]} inserted into user')
+
+        a_user = User(
+            username=each_user["username"],
+            email=each_user["email"],
+            first_name=each_user["first_name"],
+            last_name=each_user["last_name"],
+            password=each_user["password"],
+            role=each_user["role"]
+        )
+
+        db.session.add(a_user)
+        db.session.commit()
+
+
     # Initial loading of students
     students = [
         {
-            'student_id': '1',
-            'first_name': 'Robert',
-            'last_name': 'Smith',
-            'email': 'robert.smith@example.com',
+            'first_name': 'Test',
+            'last_name': 'Student',
+            'email': 'student@umd.edu',
             'major_id': 3,
-            'birth_date': dt.datetime(2007, 6, 1),
+            'birth_date': dt.strptime(
+                '2007-08-01',
+                '%Y-%m-%d'
+            ),
             'is_honors': 1
         },
 
         {
-            'student_id': '2',
-            'first_name': 'Leo',
-            'last_name': 'Van Munching',
-            'email': 'leo.vanmunching@example.com',
-            'major_id': 6,
-            'birth_date': dt.datetime(2008, 3, 24),
+            'first_name': 'Sinchana',
+            'last_name': 'Rai',
+            'email': 'sinchana@umd.edu',
+            'major_id': 3,
+            'birth_date': dt.strptime(
+                '2005-02-25',
+                '%Y-%m-%d'
+            ),
             'is_honors': 0
         }
     ]
 
-
     for each_student in students:
-
         print(
             f'{each_student["first_name"]} '
-            f'{each_student["last_name"]} inserted into Student'
+            f'{each_student["last_name"]} inserted into student'
         )
 
         a_student = Student(
